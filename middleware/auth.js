@@ -3,16 +3,16 @@ const jwt = require("jsonwebtoken")
 require('dotenv').config()
 
 
-const auth = (req,res,next)=>{
+const auth = (req, res, next) => {
 
 
-    const token  = req.headers?.authorization
+    const token = req.headers?.authorization
 
-    if(token){
-        const decoded = jwt.verify(token,process.env.secret_key)
+    if (token) {
+        const decoded = jwt.verify(token, process.env.secret_key)
 
-        if(decoded){
-            if(!req.body.userId){
+        if (decoded) {
+            if (!req.body.userId) {
                 req.body.userId = decoded.userId
             }
             next()
@@ -20,4 +20,4 @@ const auth = (req,res,next)=>{
     }
 }
 
-module.exports = {auth}
+module.exports = { auth }

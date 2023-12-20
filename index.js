@@ -10,28 +10,28 @@ app.use(express.json())
 app.use(cors())
 
 
-const {connection} = require("./config/db")
-const {userRouter} = require("./route/user.route.js")
-const {urlRouter} = require("./route/url.route")
+const { connection } = require("./config/db")
+const { userRouter } = require("./route/user.route.js")
+const { urlRouter } = require("./route/url.route")
 
 
 
 require('dotenv').config()
 
 
-app.use("/",userRouter)
-app.use("/url",urlRouter)
+app.use("/", userRouter)
+app.use("/url", urlRouter)
 
 
 
-app.get("/", (req,res)=>{
+app.get("/", (req, res) => {
 
-    
+
     res.send("welcome to my app")
-    
+
 })
 
-app.listen(process.env.port,async ()=>{
+app.listen(process.env.port, async () => {
 
     try {
         await connection
